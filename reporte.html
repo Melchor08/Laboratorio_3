@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Reportes - CBTis258</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-bg: #f8f9fa;
+            --sidebar-bg: #ffffff;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-muted: #6c757d;
+            --accent-blue: #34678d;
+            --danger-red: #dc3545;
+            --border-color: #e0e0e0;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--primary-bg);
+            margin: 0;
+            display: flex;
+            height: 100vh;
+        }
+
+        /* --- Barra Lateral --- */
+        .sidebar {
+            width: 260px;
+            background-color: var(--sidebar-bg);
+            border-right: 1px solid var(--border-color);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.02);
+        }
+
+        .sidebar h2 {
+            font-size: 1.1rem;
+            color: var(--accent-blue);
+            margin-bottom: 30px;
+            font-weight: 700;
+            text-align: center;
+            text-transform: lowercase;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 12px 15px;
+            text-decoration: none;
+            color: var(--text-main);
+            border-radius: 8px;
+            font-weight: 500;
+            margin-bottom: 5px;
+            transition: 0.3s;
+        }
+
+        .nav-link:hover { background-color: #f0f4f8; }
+        .nav-link.active { background-color: var(--accent-blue); color: white; }
+
+        .btn-logout {
+            margin-top: auto;
+            padding: 12px;
+            background-color: var(--danger-red);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* --- Contenido Principal --- */
+        .main-content {
+            flex-grow: 1;
+            padding: 40px;
+            overflow-y: auto;
+        }
+
+        .header-section {
+            margin-bottom: 30px;
+        }
+
+        .header-section h1 {
+            font-size: 1.6rem;
+            color: var(--text-main);
+            margin: 0 0 10px 0;
+        }
+
+        .header-section p {
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        /* Grid de Reportes */
+        .reports-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            max-width: 1000px;
+        }
+
+        .report-card {
+            background: var(--card-bg);
+            padding: 25px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px; /* Estilo más cuadrado según CAP6 */
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .report-card:hover {
+            box-shadow: var(--shadow);
+            transform: translateY(-2px);
+        }
+
+        .report-card h3 {
+            margin: 0 0 15px 0;
+            font-size: 1.2rem;
+            color: #000;
+            font-weight: 700;
+        }
+
+        .report-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            flex-grow: 1;
+            margin-bottom: 20px;
+        }
+
+        .report-link {
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+        }
+
+        .report-link:hover {
+            text-decoration: underline;
+        }
+
+        .disabled-card {
+            opacity: 0.7;
+        }
+
+        .disabled-text {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav class="sidebar">
+        <h2>sistema de inventario</h2>
+        <div class="nav-menu">
+      <li class="nav-item"><a href="inicio.html" class="nav-link">Inicio</a></li>
+
+<li class="nav-item"><a href="gestion_de_equipos.html" class="nav-link">Gestión de equipos</a></li>
+
+<li class="nav-item"><a href="fallas.html" class="nav-link">Registro de Fallas</a></li>
+
+<li class="nav-item"><a href="requisiciones.html" class="nav-link">Requisiciones</a></li>
+
+<li class="nav-item"><a href="salida.html" class="nav-link">Vales de Salida</a></li>
+
+<li class="nav-item"><a href="reporte.html" class="nav-link">Reportes</a></li>
+
+<li class="nav-item"><a href="registro.html" class="nav-link">Registro de usuario</a></li>
+        </div>
+        <button class="btn-logout">Cerrar Sesión</button>
+    </nav>
+
+    <main class="main-content">
+        <div class="header-section">
+            <h1>Sistema de Reportes</h1>
+            <p>Seleccione el tipo de reporte que desea generar:</p>
+        </div>
+
+        <div class="reports-grid">
+            <div class="report-card">
+                <h3>Equipos Fuera de Servicio</h3>
+                <p>Lista completa de equipos dañados que requieren reparación o reemplazo. Útil para justificar presupuesto ante la administración.</p>
+                <a href="#" class="report-link">Ver reporte →</a>
+            </div>
+
+            <div class="report-card">
+                <h3>Estadísticas por Laboratorio</h3>
+                <p>Análisis estadístico de fallas por laboratorio y tipo de equipo. Ideal para tomar decisiones estratégicas sobre renovación tecnológica.</p>
+                <a href="#" class="report-link">Ver reporte →</a>
+            </div>
+
+            <div class="report-card">
+                <h3>Histórico de Fallas</h3>
+                <p>Registro completo de todas las fallas reportadas, incluyendo estado actual y fechas de resolución.</p>
+                <a href="#" class="report-link">Ver reporte →</a>
+            </div>
+
+            <div class="report-card disabled-card">
+                <h3>Requerimientos de Compra</h3>
+                <p>Lista de requerimientos para el inicio del ciclo escolar, incluyendo mantenimientos preventivos y adquisiciones necesarias.</p>
+                <span class="disabled-text">Próximamente</span>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>

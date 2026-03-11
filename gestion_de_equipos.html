@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Equipos - CBTis258</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reutilizamos la base del diseño anterior para mantener coherencia */
+        :root {
+            --primary-bg: #f8f9fa;
+            --sidebar-bg: #ffffff;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-muted: #666666;
+            --accent-blue: #34678d;
+            --danger-red: #dc3545;
+            --border-color: #e9ecef;
+            --table-header: #f1f4f9;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--primary-bg);
+            margin: 0;
+            display: flex;
+            height: 100vh;
+        }
+
+        /* --- Sidebar (Igual al anterior para consistencia) --- */
+        .sidebar {
+            width: 260px;
+            background-color: var(--sidebar-bg);
+            border-right: 1px solid #ddd;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.02);
+        }
+
+        .sidebar h2 {
+            font-size: 1.1rem;
+            color: var(--accent-blue);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 12px 15px;
+            text-decoration: none;
+            color: var(--text-main);
+            border-radius: 8px;
+            margin-bottom: 5px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-link:hover { background: #f0f4f8; }
+        .nav-link.active { background: var(--accent-blue); color: white; }
+
+        .btn-logout {
+            margin-top: auto;
+            padding: 12px;
+            background: var(--danger-red);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        /* --- Contenido de la Tabla --- */
+        .main-content {
+            flex-grow: 1;
+            padding: 40px;
+            overflow-y: auto;
+        }
+
+        .table-container {
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            padding: 25px;
+        }
+
+        h1 {
+            font-size: 1.6rem;
+            margin-bottom: 25px;
+            color: var(--text-main);
+        }
+
+        /* Filtros */
+        .filter-section {
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        label {
+            font-weight: 600;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        select {
+            padding: 8px 15px;
+            border: 1px solid #ced4da;
+            border-radius: 6px;
+            background-color: white;
+            font-size: 0.9rem;
+            outline: none;
+        }
+
+        /* Estilos de la Tabla Profesional */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        thead th {
+            background-color: var(--table-header);
+            color: var(--accent-blue);
+            text-align: left;
+            padding: 15px;
+            font-weight: 700;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        tbody td {
+            padding: 15px;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-main);
+        }
+
+        /* Efecto cebra y hover */
+        tbody tr:nth-child(even) {
+            background-color: #fafbfc;
+        }
+
+        tbody tr:hover {
+            background-color: #f1f7ff;
+            transition: 0.2s;
+        }
+
+        /* Badge para ubicación o etiquetas */
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            background: #e9ecef;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="sidebar">
+        <h2>sistema de inventario</h2>
+    <li class="nav-item"><a href="inicio.html" class="nav-link">Inicio</a></li>
+
+<li class="nav-item"><a href="gestion_de_equipos.html" class="nav-link">Gestión de equipos</a></li>
+
+<li class="nav-item"><a href="fallas.html" class="nav-link">Registro de Fallas</a></li>
+
+<li class="nav-item"><a href="requisiciones.html" class="nav-link">Requisiciones</a></li>
+
+<li class="nav-item"><a href="salida.html" class="nav-link">Vales de Salida</a></li>
+
+<li class="nav-item"><a href="reporte.html" class="nav-link">Reportes</a></li>
+
+<li class="nav-item"><a href="registro.html" class="nav-link">Registro de usuario</a></li>
+        <button class="btn-logout">Cerrar Sesión</button>
+    </nav>
+
+    <main class="main-content">
+        <div class="table-container">
+            <h1>Gestión de Equipos</h1>
+
+            <div class="filter-section">
+                <label for="estado">Filtrar por estado:</label>
+                <select id="estado">
+                    <option>Todos</option>
+                    <option>Operativos</option>
+                    <option>Dañados</option>
+                </select>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tipo</th>
+                        <th>Nombre</th>
+                        <th>No. de serie</th>
+                        <th>Marca</th>
+                        <th>Modelo</th>
+                        <th>Ubicación</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>PC</td>
+                        <td><strong>PC-LAB1-01</strong></td>
+                        <td>SN-2023-001</td>
+                        <td>HP</td>
+                        <td>EliteDesk 800 G6</td>
+                        <td><span class="badge">LAB-1 Mesa 01</span></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>PC</td>
+                        <td><strong>PC-LAB1-02</strong></td>
+                        <td>SN-2023-002</td>
+                        <td>HP</td>
+                        <td>EliteDesk 800 G6</td>
+                        <td><span class="badge">LAB-1 Mesa 02</span></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>PC</td>
+                        <td><strong>PC-LAB1-03</strong></td>
+                        <td>SN-2023-003</td>
+                        <td>HP</td>
+                        <td>EliteDesk 800 G6</td>
+                        <td><span class="badge">LAB-1 Mesa 03</span></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>PC</td>
+                        <td><strong>PC-LAB1-04</strong></td>
+                        <td>SN-2023-004</td>
+                        <td>HP</td>
+                        <td>EliteDesk 800 G6</td>
+                        <td><span class="badge">LAB-1 Mesa 04</span></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>PC</td>
+                        <td><strong>PC-LAB2-01</strong></td>
+                        <td>SN-2023-005</td>
+                        <td>Dell</td>
+                        <td>OptiPlex 7080</td>
+                        <td><span class="badge">LAB-2 Mesa 01</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+</body>
+</html>
