@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Login - Inventario</title>
+<title>Login - Inventario CBTis258</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
@@ -17,34 +17,29 @@ font-family:'Poppins',sans-serif;
 }
 
 body{
-height:100vh;
+background:linear-gradient(135deg,#0f4c81,#1e88e5);
 display:flex;
 justify-content:center;
 align-items:center;
-background:linear-gradient(135deg,#0f4c81,#1e88e5);
+height:100vh;
 }
 
-/* CONTENEDOR ESTILO APP MOVIL */
-
-.phone-container{
-width:360px;
-height:640px;
+.phone{
+width:390px;
+height:780px;
 background:white;
-border-radius:30px;
-box-shadow:0 20px 40px rgba(0,0,0,0.2);
+border-radius:35px;
+padding:35px;
+box-shadow:0 20px 40px rgba(0,0,0,0.4);
 display:flex;
 flex-direction:column;
 justify-content:center;
-padding:35px;
 }
-
-/* TITULOS */
 
 h1{
 text-align:center;
 color:#0f4c81;
-font-size:24px;
-margin-bottom:5px;
+margin-bottom:10px;
 }
 
 h2{
@@ -52,73 +47,45 @@ text-align:center;
 color:#1e88e5;
 font-size:14px;
 margin-bottom:30px;
-font-weight:400;
-}
-
-/* INPUTS */
-
-.form-group{
-margin-bottom:20px;
 }
 
 label{
 font-size:14px;
-color:#333;
-margin-bottom:6px;
-display:block;
+margin-bottom:5px;
 }
 
 input{
 width:100%;
 padding:12px;
+margin-bottom:20px;
 border-radius:10px;
-border:1px solid #dcdcdc;
-font-size:14px;
-transition:0.3s;
+border:1px solid #ccc;
 }
 
-input:focus{
-border-color:#1e88e5;
-outline:none;
-box-shadow:0 0 5px rgba(30,136,229,0.3);
-}
-
-/* BOTON */
-
-.btn-login{
+button{
 width:100%;
 padding:14px;
+background:#1e88e5;
 border:none;
-border-radius:12px;
-background:linear-gradient(135deg,#1e88e5,#0f4c81);
+border-radius:10px;
 color:white;
 font-size:16px;
-font-weight:600;
 cursor:pointer;
-transition:0.3s;
 }
 
-.btn-login:hover{
-transform:scale(1.03);
-box-shadow:0 8px 20px rgba(0,0,0,0.2);
+button:hover{
+background:#0f4c81;
 }
-
-/* REGISTRO */
 
 .register{
 text-align:center;
-margin-top:18px;
-font-size:13px;
+margin-top:15px;
+font-size:14px;
 }
 
-.register a{
-color:#1e88e5;
+a{
 text-decoration:none;
-font-weight:600;
-}
-
-.register a:hover{
-text-decoration:underline;
+color:#1e88e5;
 }
 
 </style>
@@ -126,25 +93,19 @@ text-decoration:underline;
 
 <body>
 
-<div class="phone-container">
+<div class="phone">
 
 <h1>Sistema de Inventario</h1>
-<h2>Laboratorio CBTis 258</h2>
+<h2>Laboratorio CBTis258</h2>
 
-<form>
-
-<div class="form-group">
 <label>Usuario</label>
-<input type="text" placeholder="Ingrese su usuario">
-</div>
+<input type="text">
 
-<div class="form-group">
 <label>Contraseña</label>
-<input type="password" placeholder="Ingrese su contraseña">
-</div>
+<input type="password">
 
 <a href="inicio.html">
-<button type="button" class="btn-login">Iniciar Sesión</button>
+<button>Iniciar Sesión</button>
 </a>
 
 <div class="register">
@@ -152,10 +113,7 @@ text-decoration:underline;
 <a href="registro.html">Registrarse</a>
 </div>
 
-</form>
-
 </div>
 
 </body>
-</html>
 </html>
