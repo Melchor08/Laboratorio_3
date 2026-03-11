@@ -3,13 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Inicio</title>
+<title>Inicio - Inventario CBTis258</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 
-*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins;}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
 
 body{
 background:linear-gradient(135deg,#0f4c81,#1e88e5);
@@ -19,6 +24,8 @@ align-items:center;
 height:100vh;
 }
 
+/* CONTENEDOR DEL CELULAR */
+
 .phone{
 width:390px;
 height:780px;
@@ -27,21 +34,34 @@ border-radius:35px;
 padding:25px;
 display:flex;
 flex-direction:column;
+box-shadow:0 20px 40px rgba(0,0,0,0.4);
+overflow:hidden;
 }
+
+/* HEADER */
 
 header{
 margin-bottom:20px;
 }
 
-h1{
-color:#0f4c81;
+header h1{
 font-size:22px;
+color:#0f4c81;
+margin-bottom:5px;
 }
+
+header p{
+font-size:14px;
+color:#666;
+}
+
+/* TARJETAS */
 
 .cards{
 display:grid;
 grid-template-columns:1fr 1fr;
 gap:15px;
+margin-top:10px;
 }
 
 .card{
@@ -49,24 +69,41 @@ background:#f4f6f8;
 padding:20px;
 border-radius:15px;
 text-align:center;
+box-shadow:0 3px 10px rgba(0,0,0,0.05);
 }
 
 .card h2{
 color:#1e88e5;
+font-size:24px;
+margin-bottom:5px;
 }
+
+.card span{
+font-size:13px;
+color:#666;
+}
+
+/* MENU INFERIOR */
 
 .menu{
 margin-top:auto;
 display:flex;
 justify-content:space-around;
+align-items:center;
 padding:15px;
 border-top:1px solid #ddd;
+background:white;
 }
 
 .menu a{
 font-size:14px;
 text-decoration:none;
 color:#333;
+font-weight:500;
+}
+
+.menu a:hover{
+color:#1e88e5;
 }
 
 </style>
@@ -78,28 +115,29 @@ color:#333;
 
 <header>
 <h1>Inventario CBTis258</h1>
+<p>Panel principal del sistema</p>
 </header>
 
 <div class="cards">
 
 <div class="card">
 <h2>15</h2>
-Equipos
+<span>Equipos</span>
 </div>
 
 <div class="card">
 <h2>6</h2>
-Reportes
+<span>Reportes</span>
 </div>
 
 <div class="card">
 <h2>3</h2>
-Laboratorios
+<span>Laboratorios</span>
 </div>
 
 <div class="card">
 <h2>3</h2>
-Fallas
+<span>Fallas</span>
 </div>
 
 </div>
@@ -117,6 +155,7 @@ Fallas
 
 </body>
 </html>
+
 
 
 
